@@ -1,3 +1,5 @@
+using CEPSearch.Adapters.Interfaces;
+using CEPSearch.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -31,6 +33,9 @@ namespace CEPSearch
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CEPSearch", Version = "v1" });
             });
+
+            //Mapeando a injeção de dependência dos serviços
+            services.AddScoped<ICepConsultaRequestService, CepConsultaRequestService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
